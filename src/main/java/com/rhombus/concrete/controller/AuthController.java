@@ -8,7 +8,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(origins = {"https://54e10639396f.ngrok-free.app", "https://77e1a13c7bc4.ngrok-free.app", "http://localhost:4200"}, allowCredentials = "true")
+@CrossOrigin(origins = {"https://50f313082f2e.ngrok-free.app", "https://54e10639396f.ngrok-free.app", "https://77e1a13c7bc4.ngrok-free.app", "http://localhost:4200", "http://192.168.1.2:4200"}, allowCredentials = "true")
 public class AuthController {
     @Autowired
     private AuthService authService;

@@ -18,12 +18,15 @@ public class SecurityCorsConfig implements WebMvcConfigurer {
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
         
-        // Allow both localhost (development) and ngrok URLs (production/external access)
+        // Allow both localhost (development), LAN IP, and ngrok URLs (production/external access)
         // Note: ngrok URLs change frequently, update as needed
         config.setAllowedOrigins(List.of(
+            "https://50f313082f2e.ngrok-free.app",
             "https://54e10639396f.ngrok-free.app",
+            "https://77e1a13c7bc4.ngrok-free.app",
             "https://dd8bd9bb6410.ngrok-free.app",
-            "http://localhost:4200"
+            "http://localhost:4200",
+            "http://192.168.1.2:4200"
         ));
         
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
@@ -53,9 +56,12 @@ public class SecurityCorsConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(
+                    "https://50f313082f2e.ngrok-free.app",
                     "https://54e10639396f.ngrok-free.app",
+                    "https://77e1a13c7bc4.ngrok-free.app",
                     "https://dd8bd9bb6410.ngrok-free.app",
-                    "http://localhost:4200"
+                    "http://localhost:4200",
+                    "http://192.168.1.2:4200"
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH")
                 .allowedHeaders("*")

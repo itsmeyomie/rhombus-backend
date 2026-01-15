@@ -1,4 +1,4 @@
-package com.rhombus.concrete.service;
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++package com.rhombus.concrete.service;
 
 import com.rhombus.concrete.entity.CompletedJob;
 import com.rhombus.concrete.repository.CompletedJobRepository;
@@ -74,7 +74,7 @@ public class CompletedJobService {
     }
 
     public List<CompletedJob> findByDateRange(String startDate, String endDate) {
-        LocalDateTime start = LocalDateTime.parse(startDate + "T00:00:00");
+00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000        LocalDateTime start = LocalDateTime.parse(startDate + "T00:00:00");
         LocalDateTime end = LocalDateTime.parse(endDate + "T23:59:59");
         return completedRepository.findByTimeCompletedBetween(start, end);
     }
