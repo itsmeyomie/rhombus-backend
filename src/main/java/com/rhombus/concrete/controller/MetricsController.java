@@ -18,9 +18,8 @@ public class MetricsController {
     @GetMapping("/{date}")
     public ResponseEntity<PerformanceMetrics> getMetrics(@PathVariable String date) {
         LocalDate localDate = LocalDate.parse(date);
-        Optional<PerformanceMetrics> metrics = metricsService.getMetricsByDate(localDate);
-        return metrics.map(ResponseEntity::ok)
-                     .orElse(ResponseEntity.notFound().build());
+        PerformanceMetrics metrics = metricsService.getOrCalculateMetricsForDate(localDate);
+        return ResponseEntity.ok(metrics);
     }
 
     @PostMapping

@@ -46,5 +46,11 @@ public class AllocationService {
         LocalDateTime end = LocalDateTime.parse(endDate + "T23:59:59");
         return allocatedRepository.findByTimeAllocatedBetween(start, end);
     }
+
+    public List<AllocatedTruck> findByDate(String date) {
+        LocalDateTime start = LocalDateTime.parse(date + "T00:00:00");
+        LocalDateTime end = LocalDateTime.parse(date + "T23:59:59");
+        return allocatedRepository.findByTimeAllocatedBetween(start, end);
+    }
 }
 

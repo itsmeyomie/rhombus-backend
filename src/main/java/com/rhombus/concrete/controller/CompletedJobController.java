@@ -60,5 +60,21 @@ public class CompletedJobController {
     public ResponseEntity<Integer> getMaxTripNumber(@PathVariable String truckRegistration) {
         return ResponseEntity.ok(completedService.getMaxTripNumberForTruck(truckRegistration));
     }
+
+    @GetMapping("/driver/trips")
+    public ResponseEntity<java.util.List<java.util.Map<String, Object>>> getTripsPerDriver(
+            @RequestParam(required = false) String date,
+            @RequestParam(required = false) String startDate,
+            @RequestParam(required = false) String endDate) {
+        if (date != null) {
+            return ResponseEntity.ok(completedService.getTripsPerDriverDetailed(date));
+        } else if (startDate != null && endDate != null) {
+            return ResponseEntity.ok(completedService.getTripsPerDriverDetailedRange(startDate, endDate));
+        } else {
+            // Default to today
+            String today = java.time.LocalDate.now().toString();
+            return ResponseEntity.ok(completedService.getTripsPerDriverDetailed(today));
+        }
+    }
 }
 

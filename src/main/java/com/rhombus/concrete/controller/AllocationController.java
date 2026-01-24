@@ -52,5 +52,10 @@ public class AllocationController {
             @RequestParam String endDate) {
         return ResponseEntity.ok(allocationService.findByDateRange(startDate, endDate));
     }
+
+    @GetMapping("/date/{date}")
+    public ResponseEntity<List<AllocatedTruck>> getByDate(@PathVariable String date) {
+        return ResponseEntity.ok(allocationService.findByDate(date));
+    }
 }
 
